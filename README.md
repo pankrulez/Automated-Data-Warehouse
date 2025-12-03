@@ -142,4 +142,4 @@ FROM v_clean_data;
 
 ## 👤 Author
 
-**Pankaj Kapri**
+**Pankaj**
