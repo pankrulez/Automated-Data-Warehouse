@@ -1,0 +1,15 @@
+name: Daily Finance ETL
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs at midnight UTC
+jobs:
+  run_script:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: pip install pandas yfinance sqlalchemy psycopg2-binary
+      - name: Run ETL
+        run: python etl_pipeline.py
+        env:
+          DB_URL: ${{ secrets.DB_URL }} # You would host a cheap free-tier DB (e.g., Supabase or ElephantSQL)
